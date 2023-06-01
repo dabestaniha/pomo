@@ -13,11 +13,11 @@ var second = 1000;
 var minute = second * 60;
 var hour = minute * 60;
 
-let countDownKar = new Date('Sep 30, 2100 00:50:00').getTime();
-
 function CurrentTime() {
     let date = new Date();
-    let hour = date.getHours(), minute = date.getMinutes(), second = date.getSeconds();
+    let hour = date.getHours(),
+        minute = date.getMinutes(),
+        second = date.getSeconds();
     clock.innerHTML = hour + ":" + minute;
 
     if (hour == 12) {
@@ -45,42 +45,48 @@ function workTime() {
     pomoTitle.innerHTML = "زمان سکوت و کـار";
     pomoDesc1.innerHTML = "";
     pomoDesc2.innerHTML = "";
+    document.body.style.backgroundColor = "DodgerBlue";
 
-    setPomoTime()
+    setTime()
 }
 
 function brakeTime() {
     pomoTitle.innerHTML = "زمان کـار یا استراحت با حفظ سکوت";
     pomoDesc1.innerHTML = "همکاران می توانند در این ساعت کماکان به کارهای خود بپردازند";
     pomoDesc2.innerHTML = "بهتر است بعد از 50 دقیقه کار به خود استراحت دهید";
+    document.body.style.backgroundColor = "DeepPink";
 
-    setPomoTime()
+    setTime(true)
 }
 
 function longBrake() {
     pomoTitle.innerHTML = "زمان نماز و کـار و نهار";
     pomoDesc1.innerHTML = "خوردن نهار در غیر این ساعت ممنوع است";
     pomoDesc2.innerHTML = "همکاران می توانند در این ساعت کماکان به کارهای خود بپردازند";
+    document.body.style.backgroundColor = "MediumSeaGreen";
 
-    setPomoTime()
+    setTime(true)
 }
 
-function setPomoTime(){
-    let nowDate = new Date().getTime(), distance = countDownKar - nowDate;
-    var minTime = Math.floor((distance % (hour)) / (minute));
-    var secTime = Math.floor((distance % (minute)) / second);
-    document.body.style.backgroundColor = "DodgerBlue";
+function setTime(brakeTime = false){
 
-    if (minTime < 10) {
-        pomoMin.innerText = "0" + minTime;
+    let date = new Date(),
+        minute = date.getMinutes(),
+        second = date.getSeconds();
+
+    minute = (brakeTime ? 60 : 50) - (minute + 1);
+    second = 60 - second;
+
+    if (minute < 10) {
+        pomoMin.innerText = "0" + minute;
     }else {
-        pomoMin.innerText = minTime;
+        pomoMin.innerText = minute;
     }
 
-    if (secTime < 10) {
-        pomoSec.innerText = "0" + secTime
+    if (second < 10) {
+        pomoSec.innerText = "0" + second
     } else{
-        pomoSec.innerText = secTime
+        pomoSec.innerText = second
     }
 }
 
