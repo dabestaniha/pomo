@@ -9,10 +9,6 @@ var  clock = document.getElementById("clock");
 var  pomoMin = document.getElementById("minute");
 var  pomoSec = document.getElementById("second");
 
-var second = 1000;
-var minute = second * 60;
-var hour = minute * 60;
-
 function CurrentTime() {
     let date = new Date();
     let hour = date.getHours(),
