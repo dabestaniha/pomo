@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Estedad-FD", "Vazirmatn FD", Tahoma, serif;
+    font-weight: bold;
+    align-items: center;
+    background-color: #0181dc;
+    display: block;
+}
+
+.container {
+    color: #ffffff;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+}
+
+.counter span {
+    display: block;
+    font-size: 30rem;
+    text-align: center;
+    width: 100%;
+}
+.counter span.separator {
+    width: fit-content;
+}
+
+.clock-container {
+    color: #ffffff;
+    margin: auto;
+    display: flex;
+    flex-flow: row;
+    position: fixed;
+    align-items: baseline;
+    bottom: 0;
+    padding: 0 100px 0 0 !important;
+    gap: 1rem;
+}
+
+li {
+    display: inline-block;
+    font-size: 0.5em;
+    list-style-type: none;
+    padding: 0.5em;
+}
+
+h1 {
+    display: block;
+    font-size: 4em;
+    margin-block-start: auto;
+    margin-block-end: auto;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    font-weight: 700;
+}
