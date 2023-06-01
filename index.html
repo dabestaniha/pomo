@@ -1,0 +1,221 @@
+<!DOCTYPE>
+<html lang="fa" dir="rtl">
+<head>
+	<link rel="stylesheet" href="assets/css/Estedad-FD-font-face.css">
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Estedad-FD", "Vazirmatn FD", Tahoma, serif;
+            font-weight: bold;
+            align-items: center;
+            background-color: #0181dc;
+            display: block;
+        }
+
+        .container {
+            color: #ffffff;
+            margin: auto;
+            text-align: center;
+            width: 100%;
+        }
+
+        .counter {
+            display: flex;
+            justify-content: center;
+        }
+
+        .counter span {
+            width: 51%;
+            text-align: right;
+        }
+
+        .counter span#seconds {
+            width: 49% !important;
+            text-align: left;
+        }
+
+        .Saat-container {
+            color: #ffffff;
+            margin: auto;
+            text-align: left;
+        }
+
+        .Saat-container h2 {
+            padding: 0 100px 0 0 !important;
+            text-align: right
+        }
+
+        li {
+            display: inline-block;
+            font-size: 0.5em;
+            list-style-type: none;
+            padding: 0.5em;
+        }
+
+        h1 {
+            display: block;
+            font-size: 4em;
+            margin-block-start: auto;
+            margin-block-end: auto;
+            margin-inline-start: auto;
+            margin-inline-end: auto;
+            font-weight: 700;
+        }
+
+        #minutes, #seconds {
+            display: block;
+            font-size: 25rem;
+        }
+    </style>
+	<title></title>
+</head>
+<body>
+<audio id="Audios">
+    <source src="assets/sounds/work.mp3" type="audio/mpeg">
+    <source src="assets/sounds/brake.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <h1 id="Status"></h1>
+    <h2 id="Status2"></h2>
+    <h3 id="Status3"></h3>
+    <div class="counter">
+        <span id="minutes"></span>
+        <span id="seconds"></span>
+    </div>
+</div>
+
+
+<div class="Saat-container">
+    <h2 id="Saat"></h2>
+</div>
+
+
+<script>
+
+
+    var x = document.getElementById("myAudio");
+
+
+    var second = 1000;
+    var minute = second * 60;
+    var hour = minute * 60;
+    var day = hour * 24;
+
+
+    let countDownKar = new Date('Sep 30, 2100 00:50:00').getTime();
+    let countDownEstr = new Date('Sep 30, 2100 00:00:00').getTime();
+
+    function CurrentTime() {
+        var MyDate = new Date();
+        var My_Hour = MyDate.getHours();
+        var My_Minute = MyDate.getMinutes();
+        var My_Second = MyDate.getSeconds();
+        var Saat = document.getElementById("Saat");
+        Saat.innerHTML = My_Hour + ":" + My_Minute;// +":" + My_Second ;
+
+
+        if (My_Hour == 12) {
+            Namaz();
+        }
+        if (My_Hour != 12 && My_Minute < 50) {
+            Kar();
+        }
+        if (My_Hour != 12 && My_Minute >= 50) {
+            Esterahat();
+        }
+
+    }
+
+
+    setInterval(CurrentTime, 1);
+
+    function Kar() {
+        Status.innerHTML = "زمان سکوت و کـار";
+        Status2.innerHTML = " ";
+        Status3.innerHTML = " ";
+
+        let nowDate = new Date().getTime(),
+            distance = countDownKar - nowDate;
+        var minTime = Math.floor((distance % (hour)) / (minute));
+        var secTime = Math.floor((distance % (minute)) / second);
+        document.body.style.backgroundColor = "DodgerBlue";
+
+        document.getElementById('minutes').innerText = minTime + ":"
+        document.getElementById('seconds').innerText = secTime;
+
+        if (minTime < 10) {
+            document.getElementById('minutes').innerText = "0" + minTime + ":"
+        }
+        if (secTime < 10) {
+            document.getElementById('seconds').innerText = "0" + secTime
+        }
+
+
+    }
+
+    function Esterahat() {
+        Status.innerHTML = "زمان کـار یا استراحت با حفظ سکوت";
+        Status2.innerHTML = "همکاران می توانند در این ساعت کماکان به کارهای خود بپردازند";
+        Status3.innerHTML = "بهتر است بعد از 50 دقیقه کار به خود استراحت دهید";
+
+        let nowDate = new Date().getTime(),
+            distance = countDownEstr - nowDate;
+
+
+        var minTime = Math.floor((distance % (hour)) / (minute));
+        var secTime = Math.floor((distance % (minute)) / second);
+        document.body.style.backgroundColor = "DeepPink";
+
+        document.getElementById('minutes').innerText = minTime + ":"
+        document.getElementById('seconds').innerText = secTime;
+
+        if (minTime < 10) {
+            document.getElementById('minutes').innerText = "0" + minTime + ":"
+        }
+        if (secTime < 10) {
+            document.getElementById('seconds').innerText = "0" + secTime
+        }
+
+
+    }
+
+    function Namaz() {
+        Status.innerHTML = "زمان نماز و کـار و نهار";
+        Status2.innerHTML = "خوردن نهار در غیر این ساعت ممنوع است";
+        Status3.innerHTML = "همکاران می توانند در این ساعت کماکان به کارهای خود بپردازند";
+
+        let nowDate = new Date().getTime(),
+            distance = countDownEstr - nowDate;
+
+
+        var minTime = Math.floor((distance % (hour)) / (minute));
+        var secTime = Math.floor((distance % (minute)) / second);
+        document.body.style.backgroundColor = "MediumSeaGreen";
+
+        document.getElementById('minutes').innerText = minTime + ":"
+        document.getElementById('seconds').innerText = secTime;
+
+        if (minTime < 10) {
+            document.getElementById('minutes').innerText = "0" + minTime + ":"
+        }
+        if (secTime < 10) {
+            document.getElementById('seconds').innerText = "0" + secTime
+        }
+
+
+    }
+
+    function playAudio() {
+        x.play();
+    }
+
+
+</script>
+
+</body>
+</html>
