@@ -70,8 +70,8 @@ function setTime(brakeTime = false){
         minute = date.getMinutes(),
         second = date.getSeconds();
 
-    minute = (brakeTime ? 60 : 50) - (minute + 1);
-    second = 60 - second;
+    minute = (brakeTime ? 59 : 50) - minute;
+    second = 59 - second;
 
     if (minute < 10) {
         pomoMin.innerText = "0" + minute;
