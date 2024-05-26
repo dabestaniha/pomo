@@ -47,9 +47,9 @@ function workTime() {
 }
 
 function brakeTime() {
-    pomoTitle.innerHTML = "زمان کـار یا استراحت با حفظ سکوت";
+    pomoTitle.innerHTML = "زمان کـار یا تحلیل کارها با حفظ سکوت";
     pomoDesc1.innerHTML = "همکاران می توانند در این ساعت کماکان به کارهای خود بپردازند";
-    pomoDesc2.innerHTML = "بهتر است بعد از 50 دقیقه کار به خود استراحت دهید";
+    pomoDesc2.innerHTML = "بهتر است بعد از 50 دقیقه کار مستقیم به کار خود تنوع داده و درستی کار خود را مورد بررسی قرار دهید."
     document.body.style.backgroundColor = "DeepPink";
 
     setTime(true)
@@ -58,7 +58,7 @@ function brakeTime() {
 function longBrake() {
     pomoTitle.innerHTML = "زمان نماز و کـار و نهار";
     pomoDesc1.innerHTML = "خوردن نهار در غیر این ساعت ممنوع است";
-    pomoDesc2.innerHTML = "همکاران می توانند در این ساعت کماکان به کارهای خود بپردازند";
+    pomoDesc2.innerHTML = "بهتر است بعد از 50 دقیقه کار مستقیم به کار خود تنوع داده و درستی کار خود را مورد بررسی قرار دهید."
     document.body.style.backgroundColor = "MediumSeaGreen";
 
     setTime(true)
